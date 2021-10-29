@@ -1,0 +1,16 @@
+:root{
+    font-family: 'Ropa Sans', sans-serif;
+}
+header{
+    background-image: url(assets/header-background.png);
+    padding: 4.5rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main{
+    background-color: #535556;
+}
+header h1{
+    color:#FFD600;
+}
