@@ -67,9 +67,11 @@ main {
   align-items: center;
   grid-column: 1/2;
   grid-row: 1/2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .character-names{
-  background-color: #c4c4c4;
+  background-color: #8a8a8a;
   grid-column: 1/2;
   grid-row: 2/3;
 }
@@ -93,6 +95,8 @@ main {
   text-align: center;
   grid-column: 1/2;
   grid-row: 1/2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .people-details {
   background-color: #c4c4c4;
@@ -122,16 +126,30 @@ main {
   transform: rotate(180deg);
 }
 
-/*************** TEST *****************/
-p{
-    font-size: 1.4rem;
+/*************** loader *****************/
+.loader{
+  margin:auto;
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+  border:3px solid #8a8a8a;
+  border-top-color: #444444;
+  border-right-color: #444444;
+  border-bottom-color: #444444;
+  animation: 1s spin infinite ease-in-out;
 }
-.active-character{
-    color: pink;
-    font-size: 2rem;
-    padding: 1rem;
-    background-color: plum;
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
 }
-span.material-icons{
-    cursor: pointer;
+
+.loader-container{
+  /* margin-top: 3rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* display: block; */
 }
