@@ -98,11 +98,26 @@ main {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.people-details {
+.planet-container {
   background-color: #c4c4c4;
   padding: 10px;
   grid-column: 1/2;
   grid-row: 2/3;
+}
+.btn-container{
+  position: absolute;
+  top:53.5%;
+  text-align: center;
+}
+button{
+  color: #ffd600;
+  background-color: #c4c4c4;
+  padding: .4rem;
+  bottom: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  border: none;
 }
 .people-planet {
   background-color: #8e8e8e;
