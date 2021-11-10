@@ -7,6 +7,9 @@ header h1 {
   color: #ffd600;
   letter-spacing: 6px;
 }
+body{
+  margin: 0;
+}
 
 header {
   background-image: url(assets/header-background.png);
@@ -15,7 +18,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
-  background-position: center center;
+  background-position: bottom;
 }
 
 main {
@@ -28,15 +31,9 @@ main {
 .wrapper {
   display: flex;
   justify-content: space-around;
-  height: 90%;
+  height: 100%;
   width: 70%;
   position: relative;
-}
-
-.character-names li{
-  color: black;
-  list-style: none;
-  padding:5px;
 }
 
 .characters,
@@ -46,17 +43,30 @@ main {
   position: absolute;
   bottom: 35px;
 }
+
+.character-names li{
+  color: black;
+  list-style: none;
+  padding: 6px 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+li:hover::after{
+  content: ">";
+}
+
 .details {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 20% 40% 40%;
+  grid-template-rows: 15% 50% 35%;
   right: 0;
 }
 
 .characters {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 20% 60% 20%;
+  grid-template-rows: 15% 65% 20%;
   left: 0;
 }
 
@@ -80,17 +90,18 @@ main {
 .character-names li:nth-child(even){
   background-color: #8e8e8e;
   color: #E1DEDE;
-  
+  transition: transform 1s; 
 }
 .character-names li:nth-child(odd){
   background-color: #E1DEDE;
   color: #444444;
+  transition: transform 1s;
 }
 
 .character-names li:hover{
   background-color: #444444;
   color: #E1DEDE;
-  
+  transform: scale(1.1);  
 }
 
 .characters-footer {
@@ -103,6 +114,12 @@ main {
   align-items: flex-end;
   justify-content: center;
 }
+
+span{
+  font-size: 20px;
+  color: #444444;
+}
+
 .characters a {
   color: black;
 }
@@ -115,25 +132,46 @@ main {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.planet-container {
+
+.info-container {
   background-color: #c4c4c4;
   padding: 10px;
   grid-column: 1/2;
   grid-row: 2/3;
   position: relative;
 }
-.people-planet {
+
+h3{
+  font-size: 24px;
+  padding-bottom: 5px;
+  letter-spacing: 5px;
+}
+
+p{
+  line-height: 1.2;
+  letter-spacing: 4px;
+  font-size: 17px;
+}
+
+.character-info {
   background-color: #8e8e8e;
   grid-column: 1/2;
   grid-row: 3/4;
+  color: #E1DEDE;
+  padding: 10px;
+}
+
+.starships-span{
+ padding: 30px;
 }
 
 .people-details p,
 .people-details h3,
-.people-planet p,
-.people-planet h3 {
+.character-info p,
+.character-info h3 {
   margin: 0;
 }
+
 .page-nav {
   display: flex;
   justify-content: center;
@@ -142,16 +180,20 @@ main {
 .left-icon{
   transform: rotate(180deg);
 }
+.left-icon, .right-icon{
+  cursor: pointer;
+}
+
 .line{
   height: 1px;
   background-color: #535556;
   opacity: 0.15;
   width: 100%;
   bottom: 23%;
-  position: absolute;
-  
+  position: absolute; 
 }
-.btn{
+
+button{
   bottom: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -161,7 +203,9 @@ main {
   color: #aa952c;
   background-color: #E1DEDE;
   font-size: 12px;
+  cursor: pointer;
 }
+
 .btn-wrapper{
   width: 100%;
   bottom: 0;
@@ -171,7 +215,7 @@ main {
   align-items: center;
 }
 
-.btn:hover{
+button:hover{
   background-color: #8e8e8e;
   color: #ffd600;
 }
@@ -195,11 +239,10 @@ main {
 }
 
 .loader-container{
-  /* margin-top: 3rem; */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-  /* display: block; */
 }
+
