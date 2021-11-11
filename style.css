@@ -40,8 +40,8 @@ main {
 .details {
   height: 100%;
   width: 45%;
-  position: absolute;
   bottom: 35px;
+  transform: translateY(-7%);
 }
 
 .character-names li{
