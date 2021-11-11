@@ -7,10 +7,10 @@ let rightBtn = document.querySelector(".right-icon");
 let numberPage = document.querySelector(".page-number");
 let peopleDetails = document.querySelector(".people-details");
 let characterInfo = document.querySelector(".character-info");
-let planetBtn = document.querySelector(".planetBtn");
-let speciesBtn = document.querySelector(".speciesBtn");
-let vehicleBtn = document.querySelector(".vehiclesBtn");
-let starshipsBtn = document.querySelector(".starshipsBtn");
+let planetBtn = document.querySelector(".planet-btn");
+let speciesBtn = document.querySelector(".species-btn");
+let vehicleBtn = document.querySelector(".vehicles-btn");
+let starshipsBtn = document.querySelector(".starships-btn");
 
 let newArticle = document.createElement("article");
 newArticle.innerHTML = `
