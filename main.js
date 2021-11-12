@@ -52,6 +52,7 @@ function createNames(character) {
   aside.append(newLi);
 
   newLi.addEventListener("click", () => {
+    characterInfo.style.overflow = "hidden";
     characterInfo.innerHTML = "";
     detailPreloader();
     createDetails(character);
@@ -118,11 +119,6 @@ function createSpecies(object){
       console.log("feeeel")
       characterInfo.innerHTML = `<p>No info</p>`
     })
-  if (specie.length > 0) {
-    characterInfo.style.overflow = "scroll";
-  } else {
-    characterInfo.style.overflow = "hidden";
-  }
 }
 
 function vehicles_url_generator(object) {
@@ -237,10 +233,12 @@ function hideCharacterPreloader() {
 }
 
 planetBtn.addEventListener('click', () => {
+  characterInfo.style.overflow = "hidden";
   createPlanet(currentCharcter)
 })
 
 speciesBtn.addEventListener('click', () => {
+  characterInfo.style.overflow = "hidden";
   createSpecies(currentCharcter)
 })
 
