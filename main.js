@@ -53,7 +53,7 @@ function createNames(character) {
   newLi.addEventListener("click", () => {
     characterInfo.style.overflow = "hidden";
     characterInfo.innerHTML = "";
-    detailPreloader();
+    // detailPreloader();
     createDetails(character);
   });
 }
@@ -74,6 +74,7 @@ function createDetails(characterDetails) {
 }
 
 function createPlanet(object) {
+  detailPreloader();
   let homeworld_url = object.homeworld;
 
   fetch(homeworld_url)
@@ -84,6 +85,7 @@ function createPlanet(object) {
 }
 
 function renderPlanet(data) {
+  hideCharacterPreloader();
   characterInfo.innerHTML = `
   <h3>${data.name}</h3>
   <p>Rotation period: ${data.rotation_period}</p>
@@ -95,6 +97,7 @@ function renderPlanet(data) {
 }
 
 function createSpecies(object) {
+  detailPreloader();
   let specie = object.species;
 
   fetch(specie)
@@ -108,6 +111,7 @@ function createSpecies(object) {
 }
 
 function renderSpecie(data) {
+  hideDetailsPreloader();
   characterInfo.innerHTML = `<h3>${data.name}</h3>
     <p>Average height: ${data.average_height}</p>
     <p>Average lifespan: ${data.average_lifespan}</p>
@@ -136,6 +140,7 @@ function vehicles_url_generator(object) {
 }
 
 function createVehicles(vehiclesArray) {
+  detailPreloader();
   for (let i = 0; i < vehiclesArray.length; i++) {
     fetch(vehiclesArray[i])
       .then((response) => response.json())
@@ -146,6 +151,7 @@ function createVehicles(vehiclesArray) {
 }
 
 function renderVehicles(data) {
+  hideDetailsPreloader();
   characterInfo.innerHTML += `<h3>${data.name}</h3>
     <p>Model: ${data.model}</p>
     <p>Cost in credits: ${data.cost_in_credits}</p>
@@ -174,6 +180,7 @@ function starships_url_generator(object) {
 }
 
 function createStarships(starshipsArray) {
+  detailPreloader();
   for (let i = 0; i < starshipsArray.length; i++) {
     fetch(starshipsArray[i])
       .then((response) => response.json())
@@ -184,6 +191,7 @@ function createStarships(starshipsArray) {
 }
 
 function renderStarships(data) {
+  hideDetailsPreloader();
   characterInfo.innerHTML += `<h3>${data.name}</h3>
     <p>MGLT: ${data.MGLT}</p>
     <p>Cargo capacity: ${data.cargo_capacity}</p>
@@ -223,6 +231,9 @@ function detailPreloader() {
 
 function hideCharacterPreloader() {
   newArticle.innerHTML = "";
+}
+function hideDetailsPreloader() {
+  article2.innerHTML = "";
 }
 
 planetBtn.addEventListener("click", () => {
