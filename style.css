@@ -41,6 +41,9 @@ main {
   width: 45%;
   bottom: 35px;
   transform: translateY(-7%);
+  box-shadow: rgb(250 255 255) 0px 20px 30px -10px;
+  /* box-shadow: rgba(202, 116, 221, 1) 0px 20px 30px -10px; */
+  /* box-shadow: rgb(1, 2, 2) 0px 20px 30px -10px; */
 }
 
 .character-names li {
