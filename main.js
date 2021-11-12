@@ -29,14 +29,13 @@ function fetchData() {
   characterPreloader();
   fetch(`${base_url}/people/?page=${counter}`)
     .then((response) => {
-      hideCharacterPreloader()
+      hideCharacterPreloader();
       return response.json();
     })
     .then((response) => {
-      console.log(response);
       let characterArray = response.results;
       for (let character of characterArray) {
-       createNames(character);
+        createNames(character);
       }
     })
     .catch((error) => {
@@ -60,10 +59,9 @@ function createNames(character) {
 }
 
 function createDetails(characterDetails) {
-  currentCharcter = characterDetails
+  currentCharcter = characterDetails;
 
-  peopleDetails.innerHTML = `
-  <section class="details-container">
+  peopleDetails.innerHTML = `<section class="details-container">
   <h3>${characterDetails.name}</h3>
   <p>Height: ${characterDetails.height}</p> 
   <p>Mass: ${characterDetails.mass}</p>
@@ -72,53 +70,51 @@ function createDetails(characterDetails) {
   <p>Eye color: ${characterDetails.eye_color}</p>
   <p>Birth year: ${characterDetails.birth_year}</p>
   <p>Gender: ${characterDetails.gender}</p>
-  </section>
-  `;
-  return peopleDetails;
+  </section>`;
 }
 
-function createPlanet(object){
-  console.log(object)
+function createPlanet(object) {
   let homeworld_url = object.homeworld;
 
   fetch(homeworld_url)
     .then((response) => response.json())
     .then((data) => {
-      characterInfo.innerHTML = `
-    <h3>${data.name}</h3>
-    <p>rotation period: ${data.rotation_period}</p>
-    <p>orbital period: ${data.orbital_period}</p>
-    <p>diameter: ${data.diameter}</p>
-    <p>climate: ${data.climate}</p>
-    <p>gravity: ${data.gravity}</p>
-    <p>terrain: ${data.terrain}</p>
-    `;
-      return characterInfo;
+      renderPlanet(data);
     });
 }
 
-function createSpecies(object){
+function renderPlanet(data) {
+  characterInfo.innerHTML = `
+  <h3>${data.name}</h3>
+  <p>Rotation period: ${data.rotation_period}</p>
+  <p>Orbital period: ${data.orbital_period}</p>
+  <p>Diameter: ${data.diameter}</p>
+  <p>Climate: ${data.climate}</p>
+  <p>Gravity: ${data.gravity}</p>
+  <p>Terrain: ${data.terrain}</p>`;
+}
+
+function createSpecies(object) {
   let specie = object.species;
 
   fetch(specie)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
-      characterInfo.innerHTML = `
-    <h3>${data.name}</h3>
+      renderSpecie(data);
+    })
+    .catch((error) => {
+      characterInfo.innerHTML = `<p>No info</p>`;
+    });
+}
+
+function renderSpecie(data) {
+  characterInfo.innerHTML = `<h3>${data.name}</h3>
     <p>Average height: ${data.average_height}</p>
     <p>Average lifespan: ${data.average_lifespan}</p>
     <p>classificatio: ${data.classificatio}</p>
     <p>Created: ${data.created}</p>
     <p>Designation: ${data.designation}</p>
-    <p>Language: ${data.language}</p>
-    `;
-      return characterInfo;
-    })
-    .catch((error) => {
-      console.log("feeeel")
-      characterInfo.innerHTML = `<p>No info</p>`
-    })
+    <p>Language: ${data.language}</p>`;
 }
 
 function vehicles_url_generator(object) {
@@ -133,8 +129,7 @@ function vehicles_url_generator(object) {
       characterInfo.style.overflow = "scroll";
     }
     createVehicles(vehiclesArray);
-  }
-  else {
+  } else {
     characterInfo.style.overflow = "hidden";
     characterInfo.innerHTML = `<p>No info</p>`;
   }
@@ -142,22 +137,23 @@ function vehicles_url_generator(object) {
 
 function createVehicles(vehiclesArray) {
   for (let i = 0; i < vehiclesArray.length; i++) {
-      fetch(vehiclesArray[i])
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          characterInfo.innerHTML +=
-            ` <h3>${data.name}</h3>
+    fetch(vehiclesArray[i])
+      .then((response) => response.json())
+      .then((data) => {
+        renderVehicles(data);
+      });
+  }
+}
+
+function renderVehicles(data) {
+  characterInfo.innerHTML += `<h3>${data.name}</h3>
     <p>Model: ${data.model}</p>
     <p>Cost in credits: ${data.cost_in_credits}</p>
     <p>Length: ${data.length}</p>
     <p>Crew: ${data.crew}</p>
     <p>Vehicle_class: ${data.vehicle_class}</p>
     <p>Consumables: ${data.consumables}</p>
-    <span class="starships-span"></span>`
-            ;
-        });
-  }
+    <span class="starships-span"></span>`;
 }
 
 function starships_url_generator(object) {
@@ -165,15 +161,13 @@ function starships_url_generator(object) {
   let starships_url = object.starships;
   for (let i = 0; i < starships_url.length; i++) {
     starshipsArray.push(starships_url[i]);
-    console.log(starshipsArray);
   }
   if (starshipsArray.length > 0) {
     if (starshipsArray.length >= 1) {
       characterInfo.style.overflow = "scroll";
     }
     createStarships(starshipsArray);
-  }
-  else {
+  } else {
     characterInfo.style.overflow = "hidden";
     characterInfo.innerHTML = `<p>No info</p>`;
   }
@@ -184,19 +178,20 @@ function createStarships(starshipsArray) {
     fetch(starshipsArray[i])
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        characterInfo.innerHTML +=
-          ` <h3>${data.name}</h3>
-      <p>MGLT: ${data.MGLT}</p>
-      <p>Cargo capacity: ${data.cargo_capacity}</p>
-      <p>Consumables: ${data.consumables}</p>
-      <p>Cost in credits: ${data.cost_in_credits}</p>
-      <p>Created: ${data.created}</p>
-      <p>Crew: ${data.crew}</p>
-      <span class="starships-span"></span>`
-          ;
-      })
+        renderStarships(data);
+      });
   }
+}
+
+function renderStarships(data) {
+  characterInfo.innerHTML += `<h3>${data.name}</h3>
+    <p>MGLT: ${data.MGLT}</p>
+    <p>Cargo capacity: ${data.cargo_capacity}</p>
+    <p>Consumables: ${data.consumables}</p>
+    <p>Cost in credits: ${data.cost_in_credits}</p>
+    <p>Created: ${data.created}</p>
+    <p>Crew: ${data.crew}</p>
+    <span class="starships-span"></span>`;
 }
 
 leftBtn.addEventListener("click", () => {
@@ -205,7 +200,6 @@ leftBtn.addEventListener("click", () => {
     counter--;
     numberPage.innerText = counter;
     fetchData();
-    console.log(fetchData);
   }
 });
 
@@ -215,7 +209,6 @@ rightBtn.addEventListener("click", () => {
     counter++;
     numberPage.innerText = counter;
     fetchData();
-    console.log(fetchData);
   }
 });
 
@@ -232,22 +225,22 @@ function hideCharacterPreloader() {
   newArticle.innerHTML = "";
 }
 
-planetBtn.addEventListener('click', () => {
+planetBtn.addEventListener("click", () => {
   characterInfo.style.overflow = "hidden";
-  createPlanet(currentCharcter)
-})
+  createPlanet(currentCharcter);
+});
 
-speciesBtn.addEventListener('click', () => {
+speciesBtn.addEventListener("click", () => {
   characterInfo.style.overflow = "hidden";
-  createSpecies(currentCharcter)
-})
+  createSpecies(currentCharcter);
+});
 
-vehicleBtn.addEventListener('click', () => {
+vehicleBtn.addEventListener("click", () => {
   characterInfo.innerHTML = "";
-  vehicles_url_generator(currentCharcter)
-})
+  vehicles_url_generator(currentCharcter);
+});
 
-starshipsBtn.addEventListener('click', () => {
+starshipsBtn.addEventListener("click", () => {
   characterInfo.innerHTML = "";
-  starships_url_generator(currentCharcter)
-})
+  starships_url_generator(currentCharcter);
+});
