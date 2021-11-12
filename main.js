@@ -62,6 +62,7 @@ function createDetails(characterDetails) {
   currentCharcter = characterDetails
 
   peopleDetails.innerHTML = `
+  <section class="details-container">
   <h3>${characterDetails.name}</h3>
   <p>Height: ${characterDetails.height}</p> 
   <p>Mass: ${characterDetails.mass}</p>
@@ -70,6 +71,7 @@ function createDetails(characterDetails) {
   <p>Eye color: ${characterDetails.eye_color}</p>
   <p>Birth year: ${characterDetails.birth_year}</p>
   <p>Gender: ${characterDetails.gender}</p>
+  </section>
   `;
   return peopleDetails;
 }
