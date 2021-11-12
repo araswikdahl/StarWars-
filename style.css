@@ -69,9 +69,8 @@ li:hover::after {
   left: 0;
 }
 
-.characters-header {
-  background-color: #535556;
-  text-align: center;
+.characters-header,
+.details-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,6 +79,13 @@ li:hover::after {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+.details-header {
+  background-color: #748687;
+}
+.characters-header {
+  background-color: #535556;
+}
+
 .character-names {
   background-color: #c4c4c4;
   grid-column: 1/2;
@@ -123,14 +129,6 @@ span {
   color: black;
 }
 
-.details-header {
-  background-color: #748687;
-  text-align: center;
-  grid-column: 1/2;
-  grid-row: 1/2;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
 .details-container {
   padding: 0.5rem;
 }
