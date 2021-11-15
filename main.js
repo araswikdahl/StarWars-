@@ -12,14 +12,14 @@ let speciesBtn = document.querySelector(".species-btn");
 let vehicleBtn = document.querySelector(".vehicles-btn");
 let starshipsBtn = document.querySelector(".starships-btn");
 
-let newArticle = document.createElement("article");
-newArticle.innerHTML = `
+let CharLoader = document.createElement("article");
+CharLoader.innerHTML = `
 <section class="loader-container">
 <div class="loader"></div>
 </section>
 `;
-let article2 = document.createElement("article");
-article2.innerHTML = `
+let DetailsLoader = document.createElement("article");
+DetailsLoader.innerHTML = `
 <section class="loader-container">
 <div class="loader"></div>
 </section>
@@ -221,19 +221,19 @@ rightBtn.addEventListener("click", () => {
 });
 
 function characterPreloader() {
-  aside.append(newArticle);
+  aside.append(CharLoader);
 }
 
 function detailPreloader() {
-  peopleDetails.append(article2);
-  characterInfo.append(article2);
+  peopleDetails.append(DetailsLoader);
+  characterInfo.append(DetailsLoader);
 }
 
 function hideCharacterPreloader() {
-  newArticle.innerHTML = "";
+  CharLoader.innerHTML = "";
 }
 function hideDetailsPreloader() {
-  article2.innerHTML = "";
+  DetailsLoader.innerHTML = "";
 }
 
 planetBtn.addEventListener("click", () => {
