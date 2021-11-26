@@ -11,6 +11,7 @@ let planetBtn = document.querySelector(".planet-btn");
 let speciesBtn = document.querySelector(".species-btn");
 let vehicleBtn = document.querySelector(".vehicles-btn");
 let starshipsBtn = document.querySelector(".starships-btn");
+let loading = false
 
 let CharLoader = document.createElement("article");
 CharLoader.innerHTML = `
@@ -27,12 +28,14 @@ DetailsLoader.innerHTML = `
 
 function fetchData() {
   characterPreloader();
+  loading =true
   fetch(`${base_url}/people/?page=${counter}`)
     .then((response) => {
       hideCharacterPreloader();
       return response.json();
     })
     .then((response) => {
+      loading=false
       let characterArray = response.results;
       for (let character of characterArray) {
         createNames(character);
@@ -203,6 +206,9 @@ function renderStarships(data) {
 }
 
 leftBtn.addEventListener("click", () => {
+  if (loading){
+    return
+  }
   if (counter > 1) {
     aside.innerHTML = "";
     counter--;
@@ -212,6 +218,9 @@ leftBtn.addEventListener("click", () => {
 });
 
 rightBtn.addEventListener("click", () => {
+  if (loading){
+    return
+  }
   if (counter < 8) {
     aside.innerHTML = "";
     counter++;
